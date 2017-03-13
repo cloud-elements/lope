@@ -1,0 +1,15 @@
+machine:
+  node:
+    version: 7
+
+general:
+  artifacts:
+    - ./coverage
+
+dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
+test:
+  post:
+    - npm run cover

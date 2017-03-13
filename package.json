@@ -1,0 +1,50 @@
+{
+  "dependencies": {
+    "execa": "0.6.x",
+    "meow": "3.x",
+    "ramda": "0.23.x"
+  },
+  "description": "Third-party NPM package scripts as simple CLIs",
+  "devDependencies": {
+    "ava": "0.18.x",
+    "lope-example": "0.0.x",
+    "npm-check": "5.x",
+    "nyc": "10.x",
+    "xo": "0.17.x"
+  },
+  "engines": {"node": ">=7.6.0"},
+  "homepage": "https://github.com/cloud-elements/lope",
+  "keywords": [
+    "cli",
+    "npm",
+    "package",
+    "packages",
+    "run",
+    "script",
+    "scripts"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "lope",
+  "nyc": {
+    "branches": 100,
+    "functions": 100,
+    "lines": 100,
+    "statements": 100
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cloud-elements/lope.git"
+  },
+  "scripts": {
+    "clean": "rm -rf .nyc_output && rm -rf coverage && rm -rf node_modules",
+    "cover": "nyc report --reporter=text-lcov",
+    "coverage": "nyc report --reporter=lcov && open ./coverage/lcov-report/index.html",
+    "depend": "npm-check --ignore lope-example",
+    "lint": "xo",
+    "test": "{ npm run depend || true; } && npm run lint && npm run unit",
+    "unit": "nyc --check-coverage ava"
+  },
+  "version": "0.0.0",
+  "xo": {"esnext": true}
+}
