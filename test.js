@@ -33,10 +33,16 @@ test.serial('valid and correct arguments awaited should return successful execa 
 	t.is(executed.code, 0);
 });
 
-test.serial('valid and correct arguments including options awaited should return successful execa execution', async t => {
+test.serial('valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
 	const executed = await fromEither(null)(lope('lope-example', 'echo', {echo: 'hello'}));
 
-	t.true(executed.stdout.indexOf('hello') >= 0);
+	t.is(executed.stdout, 'hello');
+});
+
+test.serial('valid and correct arguments including longhand options awaited should return successful execa execution', async t => {
+	const executed = await fromEither(null)(lope('lope-example', 'echo', {'lope-example:echo': 'hello'}));
+
+	t.is(executed.stdout, 'hello');
 });
 
 test.serial('valid but incorrect arguments awaited should return failed execa execution', async t => {

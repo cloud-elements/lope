@@ -15,19 +15,19 @@ const validOptions = allPass([isNotNil, is(Object)]);
 const validPackage = allPass([isNotNil, isNotEmpty, is(String)]);
 const validScript = allPass([isNotNil, isNotEmpty, is(String)]);
 
-const parseOption = (key, value) => `${key}:${value}`;
-const parseOptions = pipe(
-	toPairs,
-	map(apply(parseOption)),
-	opts => opts.join(' '),
-	ifElse(
-		isEmpty,
-		always(''),
-		opts => ` -- ${opts}`
-	)
-);
-
 const exec = (shell, root = 'node_modules') => (pkg, script, options = {}) => {
+	const parseOption = (key, value) => `--${pkg}:${key}=${value}`.replace(`${pkg}:${pkg}:`, `${pkg}:`);
+	const parseOptions = pipe(
+		toPairs,
+		map(apply(parseOption)),
+		opts => opts.join(' '),
+		ifElse(
+			isEmpty,
+			always(''),
+			opts => ` ${opts}`
+		)
+	);
+
 	const validate = cond([
 		[pipe(nthArg(0), complement(validPackage)), always(Left(new Error('Invalid package')))],
 		[pipe(nthArg(1), complement(validScript)), always(Left(new Error('Invalid script')))],
