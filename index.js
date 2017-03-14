@@ -28,8 +28,8 @@ const parseOptions = pipe(
 	)
 );
 
-const exec = (shell, prefix) => (pkg, script, options = {}) => {
-	const path = join(defaultTo('.', prefix), 'node_modules', pkg);
+const exec = (shell, root) => (pkg, script, options = {}) => {
+	const path = join(defaultTo('.', root), pkg);
 
 	const validate = cond([
 		[pipe(nthArg(0), complement(validPath)), always(Left(new Error('Invalid path')))],

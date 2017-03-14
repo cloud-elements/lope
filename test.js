@@ -3,7 +3,7 @@
 const test = require('ava');
 const {shell} = require('execa');
 const {create, env} = require('sanctuary');
-const lope = require('.')(shell);
+const lope = require('.')(shell, 'node_modules');
 
 const {fromEither, either} = create({checkTypes: false, env});
 
