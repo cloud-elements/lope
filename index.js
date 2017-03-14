@@ -15,7 +15,7 @@ const validOptions = allPass([isNotNil, is(Object)]);
 const validPackage = allPass([isNotNil, isNotEmpty, is(String)]);
 const validScript = allPass([isNotNil, isNotEmpty, is(String)]);
 
-const exec = (shell, root = 'node_modules') => (pkg, script, options = {}) => {
+const run = (shell, root = 'node_modules') => (pkg, script, options = {}) => {
 	const parseOption = (key, value) => `--${pkg}:${key}=${value}`.replace(`${pkg}:${pkg}:`, `${pkg}:`);
 	const parseOptions = pipe(
 		toPairs,
@@ -41,4 +41,4 @@ const exec = (shell, root = 'node_modules') => (pkg, script, options = {}) => {
 	)(pkg, script, options);
 };
 
-module.exports = exec;
+module.exports = run;

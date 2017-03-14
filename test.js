@@ -28,21 +28,21 @@ test.serial('valid arguments should return Right', t => either(
 )(lope('lope-example', 'true')));
 
 test.serial('valid and correct arguments awaited should return successful execa execution', async t => {
-	const executed = await fromEither(null)(lope('lope-example', 'true'));
+	const ran = await fromEither(null)(lope('lope-example', 'true'));
 
-	t.is(executed.code, 0);
+	t.is(ran.code, 0);
 });
 
 test.serial('valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
-	const executed = await fromEither(null)(lope('lope-example', 'echo', {echo: 'hello'}));
+	const ran = await fromEither(null)(lope('lope-example', 'echo', {echo: 'hello'}));
 
-	t.is(executed.stdout, 'hello');
+	t.is(ran.stdout, 'hello');
 });
 
 test.serial('valid and correct arguments including longhand options awaited should return successful execa execution', async t => {
-	const executed = await fromEither(null)(lope('lope-example', 'echo', {'lope-example:echo': 'hello'}));
+	const ran = await fromEither(null)(lope('lope-example', 'echo', {'lope-example:echo': 'hello'}));
 
-	t.is(executed.stdout, 'hello');
+	t.is(ran.stdout, 'hello');
 });
 
 test.serial('valid but incorrect arguments awaited should return failed execa execution', async t => {
