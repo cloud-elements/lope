@@ -1,18 +1,19 @@
 {
   "dependencies": {
-    "execa": "0.6.x",
-    "meow": "3.x",
-    "ramda": "0.23.x"
+    "path-exists": "3.x",
+    "ramda": "0.23.x",
+    "sanctuary": "0.12.x"
   },
   "description": "Third-party NPM package scripts as simple CLIs",
   "devDependencies": {
     "ava": "0.18.x",
+    "execa": "0.6.x",
     "lope-example": "0.0.x",
     "npm-check": "5.x",
     "nyc": "10.x",
     "xo": "0.17.x"
   },
-  "engines": {"node": ">=7.6.0"},
+  "engines": {"node": "^7.6.0"},
   "homepage": "https://github.com/cloud-elements/lope",
   "keywords": [
     "cli",
@@ -46,5 +47,8 @@
     "unit": "nyc --check-coverage ava"
   },
   "version": "0.0.0",
-  "xo": {"esnext": true}
+  "xo": {
+    "esnext": true,
+    "rules": {"new-cap": 0}
+  }
 }
