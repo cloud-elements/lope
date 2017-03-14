@@ -1,4 +1,4 @@
-# lope <sub><sup>| Third-party NPM package scripts as simple CLIs<sup></sub>
+# lope <sub><sup>| Transform NPM package scripts into simple CLIs<sup></sub>
 [![version](http://img.shields.io/badge/version-0.0.0-blue.svg)](https://www.npmjs.com/package/lope)
 [![versioning](http://img.shields.io/badge/versioning-semver-blue.svg)](http://semver.org/)
 [![branching](http://img.shields.io/badge/branching-github%20flow-blue.svg)](https://guides.github.com/introduction/flow/)
