@@ -44,4 +44,4 @@ const exec = (shell, prefix) => (pkg, script, options = {}) => {
 	)(path, script, options);
 };
 
-module.exports = (shell, prefix) => exec(shell, prefix);
+module.exports = exec;
