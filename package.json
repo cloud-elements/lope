@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "path-exists": "3.x",
     "ramda": "0.23.x",
     "sanctuary": "0.12.x"
   },

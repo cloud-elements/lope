@@ -3,24 +3,24 @@
 const test = require('ava');
 const {shell} = require('execa');
 const {create, env} = require('sanctuary');
-const lope = require('.')(shell, 'node_modules');
+const lope = require('.')(shell);
 
 const {fromEither, either} = create({checkTypes: false, env});
 
 test.serial('invalid package should return Left', t => either(
-	err => t.is(err.message, 'Invalid path'),
+	err => t.is(err.message, 'Invalid package'),
 	() => t.fail()
-)(lope('invalid', 'true')));
+)(lope(null, 'true')));
 
 test.serial('invalid script should return Left', t => either(
 	err => t.is(err.message, 'Invalid script'),
 	() => t.fail()
-)(lope('lope-example', 0)));
+)(lope('lope-example', null)));
 
 test.serial('invalid options should return Left', t => either(
 	err => t.is(err.message, 'Invalid options'),
 	() => t.fail()
-)(lope('lope-example', 'true', 0)));
+)(lope('lope-example', 'true', null)));
 
 test.serial('valid arguments should return Right', t => either(
 	() => t.fail(),
