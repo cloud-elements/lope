@@ -2,7 +2,7 @@
 
 const {join} = require('path');
 const {
-	T, allPass, always, apply, complement, cond, defaultTo, ifElse, is, isEmpty, isNil, nthArg, pipe, toPairs
+	T, allPass, always, apply, complement, cond, ifElse, is, isEmpty, isNil, nthArg, pipe, toPairs
 } = require('ramda');
 const {create, env} = require('sanctuary');
 
