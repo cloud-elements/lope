@@ -32,7 +32,7 @@ const exec = (shell, root = 'node_modules') => (pkg, script, options = {}) => {
 		[pipe(nthArg(0), complement(validPackage)), always(Left(new Error('Invalid package')))],
 		[pipe(nthArg(1), complement(validScript)), always(Left(new Error('Invalid script')))],
 		[pipe(nthArg(2), complement(validOptions)), always(Left(new Error('Invalid options')))],
-		[T, (pkg, script, opts) => Right(`cd ${join(root, pkg)} && npm run ${script}${parseOptions(opts)}`)]
+		[T, (pkg, script, opts) => Right(`cd ${join(root, pkg)} && npm run --silent ${script}${parseOptions(opts)}`)]
 	]);
 
 	return pipe(
