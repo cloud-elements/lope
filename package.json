@@ -42,8 +42,10 @@
     "coverage": "nyc report --reporter=lcov && open ./coverage/lcov-report/index.html",
     "depend": "npm-check --ignore lope-example",
     "echo": "echo ${npm_package_config_echo}",
+    "false": "false",
     "lint": "xo",
     "test": "{ npm run depend || true; } && npm run lint && npm run unit",
+    "true": "true",
     "unit": "nyc --check-coverage ava"
   },
   "version": "0.0.0",
