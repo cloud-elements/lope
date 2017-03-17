@@ -32,42 +32,38 @@ test.serial('valid arguments should return Right', t => either(
 	() => t.pass()
 )(lope('node_modules', 'lope-example', 'true')));
 
-test.serial('non self-referencing root with valid and correct arguments awaited should return successful execa execution', async t => {
-	const ran = await fromEither(null)(lope('node_modules', 'lope-example', 'true'));
-
+test.serial('self-referencing package root with valid and correct arguments awaited should return successful execa execution', async t => {
+	const ran = await fromEither(null)(lope('.', 'lope', 'true'));
 	t.is(ran.code, 0);
 });
 
-test.serial('non self-referencing root with valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
-	const ran = await fromEither(null)(lope('node_modules', 'lope-example', 'echo', {echo: 'hello'}));
-
+test.serial('self-referencing package root with valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
+	const ran = await fromEither(null)(lope('.', 'lope', 'echo', {echo: 'hello'}));
 	t.is(ran.stdout, 'hello');
 });
 
-test.serial('non self-referencing root with valid but incorrect arguments awaited should return failed execa execution', async t => {
+test.serial('self-referencing package root with valid but incorrect arguments awaited should return failed execa execution', async t => {
 	try {
-		await fromEither(null)(lope('node_modules', 'lope-example', 'false'));
+		await fromEither(null)(lope('.', 'lope', 'false'));
 		t.fail();
 	} catch (err) {
 		t.not(err.code, 0);
 	}
 });
 
-test.serial('self-referencing root with valid and correct arguments awaited should return successful execa execution', async t => {
-	const ran = await fromEither(null)(lope('.', 'lope', 'true'));
-
+test.serial('local package root with valid and correct arguments awaited should return successful execa execution', async t => {
+	const ran = await fromEither(null)(lope('node_modules', 'lope-example', 'true'));
 	t.is(ran.code, 0);
 });
 
-test.serial('self-referencing root with valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
-	const ran = await fromEither(null)(lope('.', 'lope', 'echo', {echo: 'hello'}));
-
+test.serial('local package root with valid and correct arguments including shorthand options awaited should return successful execa execution', async t => {
+	const ran = await fromEither(null)(lope('node_modules', 'lope-example', 'echo', {echo: 'hello'}));
 	t.is(ran.stdout, 'hello');
 });
 
-test.serial('self-referencing root with valid but incorrect arguments awaited should return failed execa execution', async t => {
+test.serial('local package root with valid but incorrect arguments awaited should return failed execa execution', async t => {
 	try {
-		await fromEither(null)(lope('.', 'lope', 'false'));
+		await fromEither(null)(lope('node_modules', 'lope-example', 'false'));
 		t.fail();
 	} catch (err) {
 		t.not(err.code, 0);
