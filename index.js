@@ -6,7 +6,7 @@ const {
 } = require('ramda');
 const {create, env} = require('sanctuary');
 
-const {Left, map, Right} = create({checkTypes: false, env});
+const {Left, Right, map} = create({checkTypes: false, env});
 
 const isNotEmpty = complement(isEmpty);
 const isNotNil = complement(isNil);
