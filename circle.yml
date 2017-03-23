@@ -9,6 +9,8 @@ general:
 dependencies:
   pre:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+  post:
+    - npm update --dev
 
 test:
   post:
