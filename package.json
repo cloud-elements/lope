@@ -1,13 +1,13 @@
 {
   "dependencies": {
+    "execa": "0.6.x",
     "ramda": "0.23.x",
     "sanctuary": "0.12.x"
   },
   "description": "Transform NPM package scripts into simple CLIs",
   "devDependencies": {
     "ava": "0.18.x",
-    "execa": "0.6.x",
-    "lope-example": "0.0.x",
+    "lope-example": "0.2.x",
     "npm-check": "5.x",
     "nyc": "10.x",
     "xo": "0.17.x"
@@ -41,9 +41,12 @@
     "cover": "nyc report --reporter=text-lcov",
     "coverage": "nyc report --reporter=lcov && open ./coverage/lcov-report/index.html",
     "depend": "npm-check --ignore lope-example",
-    "echo": "echo ${npm_package_config_echo}",
+    "equals": "echo ${npm_package_config_input} | grep -q 'input'",
+    "equalsBoth": "echo ${npm_package_config_input0} | grep -q 'input0' && echo ${npm_package_config_input1} | grep -q 'input1'",
     "false": "false",
     "lint": "xo",
+    "stderr": ">&2 echo ${npm_package_config_input}",
+    "stdout": "echo ${npm_package_config_input}",
     "test": "{ npm run depend || true; } && npm run lint && npm run unit",
     "true": "true",
     "unit": "nyc --check-coverage ava"
